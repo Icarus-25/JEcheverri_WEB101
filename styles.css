@@ -73,7 +73,7 @@ p {
 }
 
 a:link {
-    color:white;
+    color:red;
 }
 
 a:visited {
@@ -85,7 +85,7 @@ a:hover {
 }
 
 a:active {
-    color:red
+    color:white
 }
 
 a,
@@ -171,7 +171,11 @@ button:hover {
 ***/
 
 .footer { /* Example B: This styles elements with class="footer" */
-    
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #11004f;
 }
 
 /*** Navbar [PLACEHOLDER] [ADDED IN UNIT 4] ***/
