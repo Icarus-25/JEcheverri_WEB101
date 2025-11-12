@@ -41,7 +41,9 @@ let count = 3;
 
 const addParticipant = (event) => {
     // Step 2: Write your code to manipulate the DOM here
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
     
     // Get form input values
     const nameInput = document.getElementById("name-input");
@@ -66,7 +68,9 @@ const addParticipant = (event) => {
     
     // Check if counter exists, if so remove it first
     let rsvpCount = document.getElementById("rsvp-count");
-    rsvpCount.remove();
+    if (rsvpCount){
+        rsvpCount.remove();
+    }
     
     // Create new counter paragraph
     rsvpCount = document.createElement("p");
@@ -75,15 +79,55 @@ const addParticipant = (event) => {
     
     // Append counter to participants div (always at bottom)
     participantsDiv.appendChild(rsvpCount);
-
-    // Clear the form inputs
-    nameInput.value = "";
-    emailInput.value = "";
-    phoneInput.value = "";
 }
 
 // Step 3: Add a click event listener to the submit RSVP button here
-rsvpButton.addEventListener("click", addParticipant);
-/*** Form Validation [PLACEHOLDER] [ADDED IN UNIT 7] ***/
+
+/*** Form Validation ***
+  
+  Purpose:
+  - Prevents invalid form submissions from being added to the list of participants.
+
+  When To Modify:
+  - [ ] Project 7 (REQUIRED FEATURE)
+  - [ ] Project 7 (STRETCH FEATURE)
+  - [ ] Project 9 (REQUIRED FEATURE)
+  - [ ] Any time between / after
+***/
+
+// Step 1: We actually don't need to select the form button again -- we already did it in the RSVP code above.
+
+// Step 2: Write the callback function
+const validateForm = (event) => {
+  event.preventDefault();  // ✅ Prevents form from refreshing page
+  let containsErrors = false;
+
+  var rsvpInputs = document.getElementById("rsvp-form").elements;
+  // TODO: Loop through all inputs
+  for (let i = 0; i < rsvpInputs.length; i++) {
+    if (rsvpInputs[i].value.length < 2){
+        containsErrors = true
+        rsvpInputs[i].classList.add("error");
+    }
+    else {
+        rsvpInputs[i].classList.remove("error");
+    }
+
+  }
+  // TODO: Inside loop, validate the value of each input
+
+  // TODO: If no errors, call addParticipant() and clear fields
+  if (containsErrors == false){
+    addParticipant();
+    for (let i = 0; i < rsvpInputs.length; i++){
+        rsvpInputs[i].value = "";
+    }
+  }
+}
+
+// Step 3: Replace the form button's event listener with a new one that calls validateForm()
+rsvpButton.addEventListener("click", validateForm);
+
+
 /*** Animations [PLACEHOLDER] [ADDED IN UNIT 8] ***/
 /*** Success Modal [PLACEHOLDER] [ADDED IN UNIT 9] ***/
