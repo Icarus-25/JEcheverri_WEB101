@@ -10,11 +10,21 @@
 
 // Step 1: Select the theme button
 let themeButton = document.getElementById("theme-button");
+// Ensure initial label matches current theme state
+if (document.body.classList.contains("dark-mode")) {
+  themeButton.textContent = "Light Mode";
+} else {
+  themeButton.textContent = "Dark Mode";
+}
 // Step 2: Write the callback function
 const toggleDarkMode = () => {
-    document.body.classList.toggle("dark-mode");
-
-    // This section will run whenever the button is clicked
+  document.body.classList.toggle("dark-mode");
+  // Update button text depending on active theme
+  if (document.body.classList.contains("dark-mode")) {
+    themeButton.textContent = "Light Mode";
+  } else {
+    themeButton.textContent = "Dark Mode";
+  }
 }
 
 // Step 3: Register a 'click' event listener for the theme button,
@@ -36,14 +46,11 @@ themeButton.addEventListener("click", toggleDarkMode);
 ***/
 
 // Step 1: Add your query for the submit RSVP button here
-let rsvpButton = document.getElementById("rsvp-button")
+let rsvpSubmitButton = document.getElementById("rsvp-button")
 let count = 3;
 
-const addParticipant = (event) => {
+const addParticipant = () => {
     // Step 2: Write your code to manipulate the DOM here
-    if (event) {
-        event.preventDefault();
-    }
     
     // Get form input values
     const nameInput = document.getElementById("name-input");
@@ -64,7 +71,7 @@ const addParticipant = (event) => {
     participantsDiv.appendChild(newParticipant);
 
     // Update the counter
-    count = count + 1;
+    count++;
     
     // Check if counter exists, if so remove it first
     let rsvpCount = document.getElementById("rsvp-count");
@@ -134,7 +141,7 @@ const validateForm = (event) => {
 }
 
 // Step 3: Replace the form button's event listener with a new one that calls validateForm()
-rsvpButton.addEventListener("click", validateForm);
+rsvpSubmitButton.addEventListener("click", validateForm);
 
 
 /*** Animations [PLACEHOLDER] [ADDED IN UNIT 8] ***/

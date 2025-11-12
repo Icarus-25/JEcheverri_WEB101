@@ -8,7 +8,9 @@
   - If you change the background color of your webpage, you may need to update this rule too.
 ***/
 html {
-    background-color: white;
+    /* Sets the base background color for the entire page.
+       If you want the body color to show, set this to match or be transparent. */
+    background-color: transparent;
 }
 
 /*** body ***
@@ -99,9 +101,8 @@ button {
     background-color: blue;    /* button color */
     color: white;               /* text color */
     border: none;               /* hides the default border */
-    border-radius: 12px;
-    padding: 10px 20px;          /* space between button's text and edge */
     border-radius: 5px;         /* curved edges instead of square */
+    padding: 10px 20px;          /* space between button's text and edge */
     cursor: pointer;            /* makes the cursor change when over button */
     font-size: larger;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
@@ -214,14 +215,12 @@ button:hover {
 }
 
 .navbar ul li {
-    float: left;
     margin: 10px;
     border: none;               /* hides the default border */
     border-radius: 12px;
-    padding: 15px 30px;          /* increased padding for bigger size */
     border-radius: 5px;        /* curved edges instead of square */
+    padding: 15px 30px;          /* increased padding for bigger size */
     background-color: red;
-    text-align: center;         /* centers the text/content */
     display: flex;              /* makes li a flex container */
     align-items: center;        /* vertically centers content inside li */
     justify-content: center;    /* horizontally centers content inside li */
@@ -233,9 +232,7 @@ button:hover {
     text-decoration: none;
     color: black;
     text-align: center;
-    padding: auto;
 }
-
 .navbar ul li a:hover {
     color: blue;
     font-weight: bold;
@@ -335,15 +332,18 @@ button:hover {
   cursor: pointer;           /* shows it's clickable */
 }
 
-
 /* Customize Dark Mode Theme */
 .dark-mode , .dark-mode ul {
   background-color : black;
 }
-.dark-mode p {
+.dark-mode p , .dark-mode label , .dark-mode .footer a{
   color : white;
 }
-
+.dark-mode #theme-button {
+  background-color: white;
+  color: black;
+  border: 1px solid #333;
+}
 
 /* Example: Different dark mode style for h1 (placeholder removed to fix linter) */
 
