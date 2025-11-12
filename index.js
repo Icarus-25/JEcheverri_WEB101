@@ -106,7 +106,7 @@ const validateForm = (event) => {
   // TODO: Loop through all inputs
   for (let i = 0; i < rsvpInputs.length; i++) {
     if (rsvpInputs[i].value.length < 2){
-        containsErrors = true
+        containsErrors = true;
         rsvpInputs[i].classList.add("error");
     }
     else {
@@ -115,7 +115,15 @@ const validateForm = (event) => {
 
   }
   // TODO: Inside loop, validate the value of each input
-
+  var email = document.getElementById("email-input");
+  var emailValue = email.value
+  if (!emailValue.includes("@") || !emailValue.includes(".com")){
+    containsErrors = true;
+    email.classList.add("error");
+  }
+  else {
+    email.classList.remove("error");
+  }
   // TODO: If no errors, call addParticipant() and clear fields
   if (containsErrors == false){
     addParticipant();

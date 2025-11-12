@@ -315,8 +315,9 @@ button:hover {
 .error {
   border-style: solid;
   border-width: 2px;
-
   /* Set border-color and background */
+  border-color: red;
+  background-color: pink;
 }
 /* Add other rsvp-related selectors here */
 /*** Animations [PLACEHOLDER] [ADDED IN UNIT 8] ***/
