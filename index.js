@@ -36,14 +36,54 @@ themeButton.addEventListener("click", toggleDarkMode);
 ***/
 
 // Step 1: Add your query for the submit RSVP button here
+let rsvpButton = document.getElementById("rsvp-button")
+let count = 3;
 
 const addParticipant = (event) => {
     // Step 2: Write your code to manipulate the DOM here
-
     event.preventDefault();
+    
+    // Get form input values
+    const nameInput = document.getElementById("name-input");
+    const nameValue = nameInput.value;
+
+    const phoneInput = document.getElementById("phone-input");
+    const phoneValue = phoneInput.value;
+
+    const emailInput = document.getElementById("email-input");
+    const emailValue = emailInput.value;
+
+    // Create new participant paragraph
+    const newParticipant = document.createElement("p");
+    newParticipant.textContent = `🎟️ ${nameValue} has RSVP'd.`;
+
+    // Find participants div and add the new participant
+    const participantsDiv = document.querySelector(".rsvp-participants");
+    participantsDiv.appendChild(newParticipant);
+
+    // Update the counter
+    count = count + 1;
+    
+    // Check if counter exists, if so remove it first
+    let rsvpCount = document.getElementById("rsvp-count");
+    rsvpCount.remove();
+    
+    // Create new counter paragraph
+    rsvpCount = document.createElement("p");
+    rsvpCount.id = "rsvp-count";
+    rsvpCount.textContent = "⭐" + count + " people have RSVP'd to this event!";
+    
+    // Append counter to participants div (always at bottom)
+    participantsDiv.appendChild(rsvpCount);
+
+    // Clear the form inputs
+    nameInput.value = "";
+    emailInput.value = "";
+    phoneInput.value = "";
 }
 
 // Step 3: Add a click event listener to the submit RSVP button here
+rsvpButton.addEventListener("click", addParticipant);
 /*** Form Validation [PLACEHOLDER] [ADDED IN UNIT 7] ***/
 /*** Animations [PLACEHOLDER] [ADDED IN UNIT 8] ***/
 /*** Success Modal [PLACEHOLDER] [ADDED IN UNIT 9] ***/
