@@ -49,22 +49,10 @@ themeButton.addEventListener("click", toggleDarkMode);
 let rsvpSubmitButton = document.getElementById("rsvp-button")
 let count = 3;
 
-const addParticipant = () => {
-    // Step 2: Write your code to manipulate the DOM here
-    
-    // Get form input values
-    const nameInput = document.getElementById("name-input");
-    const nameValue = nameInput.value;
-
-    const phoneInput = document.getElementById("phone-input");
-    const phoneValue = phoneInput.value;
-
-    const emailInput = document.getElementById("email-input");
-    const emailValue = emailInput.value;
-
+const addParticipant = (person) => {
     // Create new participant paragraph
     const newParticipant = document.createElement("p");
-    newParticipant.textContent = `🎟️ ${nameValue} has RSVP'd.`;
+    newParticipant.textContent = `🎟️ ${person.name} has RSVP'd.`;
 
     // Find participants div and add the new participant
     const participantsDiv = document.querySelector(".rsvp-participants");
@@ -86,7 +74,7 @@ const addParticipant = () => {
     
     // Append counter to participants div (always at bottom)
     participantsDiv.appendChild(rsvpCount);
-}
+  }
 
 // Step 3: Add a click event listener to the submit RSVP button here
 
@@ -106,36 +94,48 @@ const addParticipant = () => {
 
 // Step 2: Write the callback function
 const validateForm = (event) => {
-  event.preventDefault();  // ✅ Prevents form from refreshing page
+  event.preventDefault();  // Prevents form from refreshing page
   let containsErrors = false;
 
   var rsvpInputs = document.getElementById("rsvp-form").elements;
-  // TODO: Loop through all inputs
-  for (let i = 0; i < rsvpInputs.length; i++) {
-    if (rsvpInputs[i].value.length < 2){
-        containsErrors = true;
-        rsvpInputs[i].classList.add("error");
-    }
-    else {
-        rsvpInputs[i].classList.remove("error");
-    }
+  // Build person object from inputs (trim whitespace)
+  let person = {
+    name: rsvpInputs[0].value.trim(),
+    phone: rsvpInputs[1].value.trim(),
+    email: rsvpInputs[2].value.trim()
+  };
 
-  }
-  // TODO: Inside loop, validate the value of each input
-  var email = document.getElementById("email-input");
-  var emailValue = email.value
-  if (!emailValue.includes("@") || !emailValue.includes(".com")){
+  // Validate name (required, min length 2)
+  if (person.name.length < 2) {
     containsErrors = true;
-    email.classList.add("error");
+    rsvpInputs[0].classList.add("error");
+  } else {
+    rsvpInputs[0].classList.remove("error");
   }
-  else {
-    email.classList.remove("error");
+
+  // Validate phone (keep existing rule: min length 2)
+  if (person.phone.length < 2) {
+    containsErrors = true;
+    rsvpInputs[1].classList.add("error");
+  } else {
+    rsvpInputs[1].classList.remove("error");
   }
-  // TODO: If no errors, call addParticipant() and clear fields
-  if (containsErrors == false){
-    addParticipant();
-    for (let i = 0; i < rsvpInputs.length; i++){
-        rsvpInputs[i].value = "";
+
+  // Validate email: must contain '@' and '.com'
+  if (!person.email.includes("@") || !person.email.includes(".com")) {
+    containsErrors = true;
+    rsvpInputs[2].classList.add("error");
+  } else {
+    rsvpInputs[2].classList.remove("error");
+  }
+
+  // If no errors, add participant and clear fields
+  if (!containsErrors) {
+    // Optionally you could pass person to addParticipant if you refactor it
+    addParticipant(person);
+    toggleModal(person)
+    for (let i = 0; i < rsvpInputs.length; i++) {
+      rsvpInputs[i].value = "";
     }
   }
 }
@@ -145,4 +145,32 @@ rsvpSubmitButton.addEventListener("click", validateForm);
 
 
 /*** Animations [PLACEHOLDER] [ADDED IN UNIT 8] ***/
-/*** Success Modal [PLACEHOLDER] [ADDED IN UNIT 9] ***/
+/*** Modal ***
+  
+  Purpose:
+  - Use this starter code to add a pop-up modal to your website.
+
+  When To Modify:
+  - [ ] Project 9 (REQUIRED FEATURE)
+  - [ ] Project 9 (STRETCH FEATURE)
+  - [ ] Any time after
+***/
+// Show a simple thank-you modal. Accepts a `person` object with name/email/phone
+function toggleModal(person) {
+  const modal = document.getElementById('success-modal');
+  const modalContent = document.getElementById('modal-text');
+  if (!modal || !modalContent) return;
+
+  // Personalized content
+  modalContent.textContent = `Thanks ${person.name}! We've recorded your RSVP and will contact you at ${person.email}.`;
+
+  // Make the modal visible (display:flex expected in CSS)
+  modal.style.display = 'flex';
+
+  // Auto-hide after 5 seconds
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 5000);
+}
+
+// TODO: animation variables and animateImage() function
