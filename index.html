@@ -13,7 +13,7 @@
         - [ ] Project 2 (STRETCH FEATURE) (favicon)
         - [ ] Any time after
         -->
-        <title>LatinX Party</title>
+        <title>LatinX Party 2025 - November 25 | Downtown Dance Hall</title>
         <link rel="stylesheet" href="styles.css">
         <link rel="icon" href="\img\dance.png">
     </head>
@@ -55,7 +55,7 @@ When To Modify:
         - [ ] Any time after
         -->
      <div id="home" class="header-container"> 
-        <div id="header-img">
+        <div class="header-image">
             <img id="header-img" src="/img/header.png">
         </div>
         <div class="header-item">
@@ -63,11 +63,12 @@ When To Modify:
         </div>
         <div class="header-item"> 
             <h2 >Lets start this fiesta!</h2>
+            <p><strong>Date:</strong> November 25, 2025 | <strong>Time:</strong> 7:00 PM - 2:00 AM | <strong>Location:</strong> Downtown Dance Hall</p>
         </div>
         <br>
         <div class="header-button">
-            <button type="button">Buy tickets</button>
-            <button type="button">Contact Us</button>
+            <button type="button" id="rsvp-header-btn">RSVP</button>
+            <button type="button" id="contact-btn">Contact Us</button>
         </div>
     </div>  
         <!-- about
@@ -82,9 +83,23 @@ When To Modify:
         - [ ] Project 4 (STRETCH FEATURE) 
         - [ ] Any time between / after
         --> 
-        <h2 id="about">About the Event</h2>
-        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NoixnVu5dLk?si=J_8vWDvzP569fCRd&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <p >This is a vibrant community celebration featuring live performances, interactive activities, and delicious food. Designed for families, friends, and festival-goers of all ages, the event offers something for everyone—from music and dance to games and local vendors. Whether you're here to enjoy the entertainment, explore cultural showcases, or simply have fun, this event is your destination for unforgettable memories.</p>
+        <div class="section-title">
+            <h2 id="about">About the Event</h2>
+        </div>
+        <div class="about-content">
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NoixnVu5dLk?si=J_8vWDvzP569fCRd&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="about-description">
+                <p>This is a vibrant community celebration featuring live performances, interactive activities, and delicious food. Designed for families, friends, and festival-goers of all ages, the event offers something for everyone—from music and dance to games and local vendors. Whether you're here to enjoy the entertainment, explore cultural showcases, or simply have fun, this event is your destination for unforgettable memories.</p>
+                <ul>
+                    <li>🌟 Live DJs and Latin music performances</li>
+                    <li>🍲 Authentic Latin cuisine and drinks</li>
+                    <li>💃 Dance workshops and competitions</li>
+                    <li>🎨 Cultural exhibits and photo booths</li>
+                </ul>
+            </div>
+        </div>
 
         <!-- schedule
 
@@ -97,7 +112,9 @@ When To Modify:
         - [ ] Project 4 (STRETCH FEATURE) 
         - [ ] Any time between / after
         --> 
-        <h2 id="schedule">Event Schedule</h2>
+        <div class="section-title">
+            <h2 id="schedule">Event Schedule</h2>
+        </div>
         <div class="schedule-container">
         <div class="schedule-item">
         <img alt="A group of people dancing salsa" src="\img\party1.jpg"/>
@@ -128,10 +145,13 @@ When To Modify:
 - [ ] Any time after
 --> 
 <div id="rsvp">
-    <h2>RSVP</h2>
+    <div class="section-title">
+        <h2>RSVP</h2>
+    </div>
     <div class="rsvp-container">
         <div class="rsvp-para">
             <p>Get ready to turn up the heat at the Latino Party of the Year — where the rhythm never stops, the energy is contagious, and every moment is a celebration of culture, connection, and pure joy. Whether you're coming to dance, vibe, or just soak in the atmosphere, this is your night to shine.</p>
+            <p><strong>Don't miss out! RSVP now to secure your spot.</strong></p>
         </div>
         <div class="rsvp-participants">
             <p>🎟️ Shakira from Colombia has RSVP'd.</p>
@@ -142,21 +162,20 @@ When To Modify:
         <div class="participants">
             <!-- RSVPs go here -->
         </div>
-    </div>
-
-    <!--- Sign RSVP Form --->
-    <div class="form-container">
-        <form id="rsvp-form" title="rsvp-form">
-            <label>Name: </label>
-            <input type="text" id="name-input">
-            <label>Phone Number: </label>
-            <input type="tel" id="phone-input">
-            <label>E-Mail: </label>
-            <input type="email" id="email-input">
-            <!-- form inputs go here -->
-        </form>
-        <!-- Submit button -->
-        <button id="rsvp-button">Submit RSVP</button>
+        <div class="rsvp-form-container">
+            <!--- Sign RSVP Form --->
+            <form id="rsvp-form" title="rsvp-form">
+                <label>Name: </label>
+                <input type="text" id="name-input">
+                <label>Phone Number: </label>
+                <input type="tel" id="phone-input">
+                <label>E-Mail: </label>
+                <input type="email" id="email-input">
+                <!-- form inputs go here -->
+                <!-- Submit button -->
+                <button id="rsvp-button" type="submit">Submit RSVP</button>
+            </form>
+        </div>
     </div>      
 </div>
 <!-- success modal
@@ -180,6 +199,7 @@ When To Modify:
             <img src="/img/fireworks.gif" alt="fireworks">
             <!-- move the modal text inside the same container as the image so we can overlay -->
             <p id="modal-text">Text</p>
+            <button id="close-modal-button">Close</button>
         </div>
     </div>
 </div>
@@ -194,7 +214,9 @@ When To Modify:
         - [ ] Project 4 (STRETCH FEATURE) 
         - [ ] Any time between / after
         --> 
-        <h2 id="links">Links</h2>
+        <div class="section-title">
+            <h2 id="links">Links</h2>
+        </div>
 
         <!-- This <a> block is one link.  Copy and paste all 6 lines to create another link. -->
         <a class="block" href="https://www.salsacontodo.com/">

@@ -37,7 +37,7 @@ body {
     /* Put space around the edges of the webpage */
     margin: 20px;
     margin-top: 60px;
-    margin-bottom: 50px;
+    margin-bottom: 80px; /* increased to avoid footer overlap */
 }
 
 /*** Text ***
@@ -217,7 +217,6 @@ button:hover {
 .navbar ul li {
     margin: 10px;
     border: none;               /* hides the default border */
-    border-radius: 12px;
     border-radius: 5px;        /* curved edges instead of square */
     padding: 15px 30px;          /* increased padding for bigger size */
     background-color: red;
@@ -242,17 +241,58 @@ button:hover {
 .navbar ul li:has(#theme-button) {
     background-color: black;
 }
-/*** About Section ***
-  
-  Purpose:
-  - Add style rules for your website's About section
+/*** About Section ***/
 
-  When To Modify:
-  - [ ] Project 3 (OPTIONAL)
-  - [ ] Project 4 (STRETCH FEATURE) 
-  - [ ] Any time after
-***/
+#about {
+  text-align: center;
+  background-color: white;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
 
+#about iframe {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  height: 315px;
+  margin: 20px auto;
+  border: none;
+}
+
+.video-container {
+  text-align: center;
+  flex: 1;
+}
+
+.about-description {
+  flex: 1;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.about-description ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.about-description li {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin: 20px 0;
+}
 
 /*** Schedule Section ***
   
@@ -289,9 +329,24 @@ button:hover {
   - [ ] Any time after
 ***/
 
+#rsvp {
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+#rsvp h2 {
+  background-color: white;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
 .rsvp-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   gap: 20px;
   width: 100%;
   padding-bottom: 50px;
@@ -299,14 +354,16 @@ button:hover {
 
 /* RSVP paragraph/left column */
 .rsvp-para {
-  width: 55%;
-  padding-right: 10px;
+  flex: 0 0 40%;
 }
 
-/* RSVP participants/right column */
+/* RSVP participants/middle column */
 .rsvp-participants {
-  width: 45%;
-  padding-right: 10px;
+  flex: 0 0 30%;
+}
+
+.rsvp-form-container {
+  flex: 0 0 30%;
 }
 
 .error {
@@ -315,6 +372,50 @@ button:hover {
   /* Set border-color and background */
   border-color: red;
   background-color: pink;
+}
+
+.rsvp-form-container {
+  margin-top: 0;
+  text-align: center;
+}
+
+.rsvp-form-container form {
+  display: inline-block;
+  text-align: left;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.rsvp-form-container label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.rsvp-form-container input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.rsvp-form-container button {
+  margin-top: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.rsvp-form-container button:hover {
+  background-color: darkred;
 }
 /* Add other rsvp-related selectors here */
 /*** Animations [PLACEHOLDER] [ADDED IN UNIT 8] ***/
@@ -405,6 +506,20 @@ button:hover {
   width: 90%;
 }
 
+/* Style the close button */
+#close-modal-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
 /* Add style to button */
 #theme-button {
   color:white;
@@ -465,25 +580,45 @@ button:hover {
 #schedule {
   text-align: center;
   background-color: white;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 .schedule-container{
     display: flex;
     flex-direction: row;
 }
 .schedule-item:nth-of-type(1){
-    width:40%;
+    width:33.33%;
     text-align: center;
 }
 .schedule-item:nth-of-type(2){
-    width:40%;
+    width:33.33%;
     text-align: center;
 }
 .schedule-item:nth-of-type(3){
-    width:40%;
+    width:33.33%;
     text-align: center;
 }
 
 #links {
-  text-align: left;
+  text-align: center;
   background-color: white;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.block {
+  display: block;
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.block:hover {
+  background-color: #f9f9f9;
 }

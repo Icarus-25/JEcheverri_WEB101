@@ -31,6 +31,18 @@ const toggleDarkMode = () => {
 //             and tell it to use toggleDarkMode as its callback function
 themeButton.addEventListener("click", toggleDarkMode);
 
+// Header buttons
+const rsvpHeaderBtn = document.getElementById("rsvp-header-btn");
+const contactBtn = document.getElementById("contact-btn");
+
+rsvpHeaderBtn.addEventListener("click", () => {
+  document.getElementById("rsvp").scrollIntoView({ behavior: "smooth" });
+});
+
+contactBtn.addEventListener("click", () => {
+  window.location.href = "mailto:info@latinxparty.com";
+});
+
 /*** Form Handling ***
   
   Purpose:
@@ -167,10 +179,39 @@ function toggleModal(person) {
   // Make the modal visible (display:flex expected in CSS)
   modal.style.display = 'flex';
 
+  // Start the image animation
+  intervalId = setInterval(animateImage, 500);
+
   // Auto-hide after 5 seconds
   setTimeout(() => {
     modal.style.display = 'none';
+    clearInterval(intervalId);
   }, 5000);
 }
 
 // TODO: animation variables and animateImage() function
+var rotateFactor = 0;
+var modalImage = document.querySelector('.modal-item img');
+var intervalId;
+
+// Select the close button
+const closeButton = document.getElementById('close-modal-button');
+
+// Function to close the modal
+function closeModal() {
+  const modal = document.getElementById('success-modal');
+  modal.style.display = 'none';
+  clearInterval(intervalId);
+}
+
+// Add event listener to the close button
+closeButton.addEventListener('click', closeModal);
+
+function animateImage() {
+  if (rotateFactor === 0) {
+    rotateFactor = -10;
+  } else {
+    rotateFactor = 0;
+  }
+  modalImage.style.transform = `rotate(${rotateFactor}deg)`;
+}
