@@ -27,7 +27,7 @@ html {
 
 body {
     /* Add a background color or image */
-    background-color: skyblue; /* see bottom of file for color variables */
+    background-color: #e6f3ff; /* light blue background for cohesive theme */
 
     /* Customize the default size, color, and font for text*/
     font-size: 16px;
@@ -36,8 +36,8 @@ body {
 
     /* Put space around the edges of the webpage */
     margin: 20px;
-    margin-top: 60px;
-    margin-bottom: 80px; /* increased to avoid footer overlap */
+    margin-top: 50px;
+    margin-bottom: 40px; /* reduced to minimize space */
 }
 
 /*** Text ***
@@ -74,7 +74,7 @@ h4 {
 }
 
 p {
-    color:darkblue;
+    color:#00008b;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
@@ -98,7 +98,7 @@ a:active {
 
 button {
     /* Example Style, replace with your own! */
-    background-color: blue;    /* button color */
+    background-color: #ff4500;    /* red button color */
     color: white;               /* text color */
     border: none;               /* hides the default border */
     border-radius: 5px;         /* curved edges instead of square */
@@ -110,12 +110,12 @@ button {
 }
 
 ul {
-    color:white;
+    color:#00008b;
    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 button:hover {
-  background-color: red;
+  background-color: #cc3300;
   font-weight: bold;
     /* Make the button look different when the user hovers over it */
 }
@@ -134,27 +134,17 @@ button:hover {
 .header-container { /* Example A: This styles elements with class="header" */
     display: flex;                  /* side-by-side layout */
     flex-direction: row;  /* push left and right apart */
-    justify-content: space-evenly;
+    justify-content: center;
     align-items:center;
     text-align: center; 
     padding-top: 20px;
     margin-top: 0px;
-    margin-bottom: 30px;
-}
-.header-item:nth-of-type(1){
-  width: 60%;                     /* right column */
-  text-align: left;
-  margin-bottom: 10px;
-}
-.header-item:nth-of-type(2){
-  width: 40%;                     /* right column */
-  text-align: left;
-  margin-bottom: 10px; 
+    margin-bottom: 20px;
 }
 
 #header-img{
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   height: auto;
   display: block;
 }
@@ -185,7 +175,8 @@ button:hover {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #11004f;
+  background-color: #00008b;
+  color: white;
 }
 
 /*** Navigation bar (navbar) ***
@@ -282,16 +273,29 @@ button:hover {
 }
 
 .about-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
+  text-align: center;
   margin: 20px 0;
 }
 
 .section-title {
   text-align: center;
-  margin: 20px 0;
+  margin: 10px 0;
+}
+
+.about-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.title-and-desc {
+  text-align: left;
+}
+
+.video-container iframe {
+  width: 560px;
+  height: 315px;
 }
 
 /*** Schedule Section ***
@@ -457,7 +461,7 @@ button:hover {
     width: 55%;
 
     /* Customize modal style here */
-    background-color: lightsteelblue;
+    background-color: #e6f3ff;
     color: black;
     text-align: center;
     font-size: 1rem;
@@ -536,13 +540,53 @@ button:hover {
 .dark-mode , .dark-mode ul {
   background-color : black;
 }
-.dark-mode p , .dark-mode label , .dark-mode .footer a{
+.dark-mode p , .dark-mode label , .dark-mode .footer a, .dark-mode .footer{
   color : white;
 }
 .dark-mode #theme-button {
   background-color: white;
   color: black;
   border: 1px solid #333;
+}
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4 {
+  color: white;
+}
+.dark-mode a:link {
+  color: #add8e6;
+}
+.dark-mode a:visited {
+  color: #ff4500;
+}
+.dark-mode a:hover {
+  color: white;
+}
+.dark-mode .modal-container {
+  background-color: #00008b;
+}
+.dark-mode #rsvp h2, .dark-mode #about, .dark-mode #schedule, .dark-mode #links {
+  background-color: black;
+  color: white;
+}
+.dark-mode .rsvp-form-container form {
+  background-color: #333;
+  color: white;
+}
+.dark-mode .rsvp-form-container label {
+  color: white;
+}
+.dark-mode .block {
+  background-color: #333;
+}
+.dark-mode .schedule-item {
+  background-color: #333;
+}
+.dark-mode input {
+  background-color: #555;
+  color: white;
+  border: 1px solid #ccc;
+}
+.dark-mode .navbar ul li a {
+  color: white;
 }
 
 /*** Custom Colors (OPTIONAL) ***
@@ -558,19 +602,19 @@ button:hover {
 
 :root {
     /* Light Mode */
-    --bg-color: #a6a0cf;
-    --text-color: #231942;
+    --bg-color: #e6f3ff;
+    --text-color: #00008b;
 
     /* Dark Mode */
-    --bg-color-dark-mode: #3e3377;
-    --text-color-dark-mode: #fff;
+    --bg-color-dark-mode: #00008b;
+    --text-color-dark-mode: #ffffff;
 
     /* Accent Colors */
-    --accent-color-light: #d2cff5;
-    --accent-color-medium: #684fb5;
-    --accent-color-dark: #482f95;
-    --accent-color-darkest: #231942;
-    --accent-color-green: #28eb76;
+    --accent-color-light: #add8e6;
+    --accent-color-medium: #ff4500;
+    --accent-color-dark: #cc3300;
+    --accent-color-darkest: #8b0000;
+    --accent-color-green: #32cd32;
 
     /* Error Colors */
     --error-color: #f8bbd0;
@@ -621,4 +665,13 @@ button:hover {
 
 .block:hover {
   background-color: #f9f9f9;
+}
+
+.no-motion * {
+  animation: none !important;
+  transition: none !important;
+}
+
+.no-motion #reduce-motion-btn {
+  background-color: #00008b;
 }

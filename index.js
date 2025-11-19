@@ -43,6 +43,14 @@ contactBtn.addEventListener("click", () => {
   window.location.href = "mailto:info@latinxparty.com";
 });
 
+// Reduce Motion button
+const reduceMotionBtn = document.getElementById('reduce-motion-btn');
+reduceMotionBtn.addEventListener('click', reduceMotion);
+
+function reduceMotion() {
+    document.body.classList.toggle('no-motion');
+}
+
 /*** Form Handling ***
   
   Purpose:
@@ -179,13 +187,15 @@ function toggleModal(person) {
   // Make the modal visible (display:flex expected in CSS)
   modal.style.display = 'flex';
 
-  // Start the image animation
-  intervalId = setInterval(animateImage, 500);
+  // Start the image animation only if reduce motion is off
+  if (!document.body.classList.contains('no-motion')) {
+    intervalId = setInterval(animateImage, 500);
+  }
 
   // Auto-hide after 5 seconds
   setTimeout(() => {
     modal.style.display = 'none';
-    clearInterval(intervalId);
+    if (intervalId) clearInterval(intervalId);
   }, 5000);
 }
 
@@ -201,7 +211,7 @@ const closeButton = document.getElementById('close-modal-button');
 function closeModal() {
   const modal = document.getElementById('success-modal');
   modal.style.display = 'none';
-  clearInterval(intervalId);
+  if (intervalId) clearInterval(intervalId);
 }
 
 // Add event listener to the close button
